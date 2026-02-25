@@ -57,5 +57,26 @@
         <members>ImageURL</members>
         <name>CspTrustedSite</name>
     </types>
+
+    <types>
+        <members>Car_Record_Page</members>
+        <members>Booking_Record_Page</members>
+        <name>FlexiPage</name>
+    </types>
+
+    <types>
+        <members>Car__c-Car Layout</members>
+        <members>Car_Image__c-Car Image Layout</members>
+        <members>Booking__c-Booking Layout</members>
+        <members>Review__c-Review Layout</members>
+        <members>LogEvent__c-Log Event Layout</members>
+        <members>Coupon_Code__c-Coupon Code Layout</members>
+        <members>Payment_Transaction__c-Payment Transaction Layout</members>
+        <members>Case-Booking Inquiry Layout</members>
+        <members>Case-Review Issue Layout</members>
+        <members>Case-Maintenance Request Layout</members>
+        <members>Contact-Contact Layout</members>
+        <name>Layout</name>
+    </types>
     <version>65.0</version>
 </Package>
