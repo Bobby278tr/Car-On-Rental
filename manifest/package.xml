@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
-    <!-- Custom and Standard Objects -->
+     <!-- Custom Metadata Type Definition -->
     <types>
-        <members>Car__c</members>
-        <members>Car_Image__c</members>
-        <members>Booking__c</members>
-        <members>Review__c</members>
-        <members>LogEvent__c</members>
-        <members>Coupon_Code__c</members>
-        <members>Payment_Transaction__c</members>
-        <members>Case</members>
-        <members>Contact</members>
+        <members>System_Threshold__mdt</members>
         <name>CustomObject</name>
     </types>
 
-    <!-- Permission Set -->
+    <!-- Custom Metadata Records -->
     <types>
-        <members>Car_On_Rental</members>
-        <name>PermissionSet</name>
-    </types>
-
-    <!-- Custom Application -->
-    <types>
-        <members>Car_On_Rental</members>
-        <name>CustomApplication</name>
+        <members>System_Threshold__mdt.Cancellation_Percentage</members>
+        <members>System_Threshold__mdt.Max_Auto_Approved_Discount</members>
+        <members>System_Threshold__mdt.Max_Code_Discount</members>
+        <members>System_Threshold__mdt.Min_Review_Rating</members>
+        <members>System_Threshold__mdt.Security_Deposit_Percentage</members>
+        <name>CustomMetadata</name>
     </types>
     <version>65.0</version>
 </Package>
