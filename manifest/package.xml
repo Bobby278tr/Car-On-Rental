@@ -47,5 +47,15 @@
         <members>CarOnRentalLogo</members>
         <name>StaticResource</name>
     </types>
+
+    <types>
+        <members>ImageURL</members>
+        <name>RemoteSiteSetting</name>
+    </types>
+
+    <types>
+        <members>ImageURL</members>
+        <name>CspTrustedSite</name>
+    </types>
     <version>65.0</version>
 </Package>
