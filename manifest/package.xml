@@ -42,5 +42,10 @@
         <members>System_Threshold__mdt.Security_Deposit_Percentage</members>
         <name>CustomMetadata</name>
     </types>
+
+    <types>
+        <members>CarOnRentalLogo</members>
+        <name>StaticResource</name>
+    </types>
     <version>65.0</version>
 </Package>
