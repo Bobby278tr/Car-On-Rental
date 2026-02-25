@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <!-- Custom and Standard Objects -->
+    <types>
+        <members>Car__c</members>
+        <members>Car_Image__c</members>
+        <members>Booking__c</members>
+        <members>Review__c</members>
+        <members>LogEvent__c</members>
+        <members>Coupon_Code__c</members>
+        <members>Payment_Transaction__c</members>
+        <members>Case</members>
+        <members>Contact</members>
+        <name>CustomObject</name>
+    </types>
+
+    <!-- Permission Set -->
+    <types>
+        <members>Car_On_Rental</members>
+        <name>PermissionSet</name>
+    </types>
+
+    <!-- Custom Application -->
+    <types>
+        <members>Car_On_Rental</members>
+        <name>CustomApplication</name>
+    </types>
+    <version>65.0</version>
+</Package>
