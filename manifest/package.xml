@@ -7,6 +7,7 @@
         <members>Car_Image__c</members>
         <members>Booking__c</members>
         <members>Review__c</members>
+        <members>Log__e</members>
         <members>LogEvent__c</members>
         <members>Coupon_Code__c</members>
         <members>Payment_Transaction__c</members>
@@ -22,19 +23,29 @@
         <name>PermissionSet</name>
     </types>
 
+    <!-- Profile -->
     <types>
         <members>Car Rental Representative</members>
         <name>Profile</name>
     </types>
+
+    <!-- Roles -->
     <types>
         <members>*</members>
         <name>Role</name>
     </types>
 
+    <!-- Public Groups -->
     <types>
         <members>Fleet_Management_Team</members>
         <members>Marketing_Team</members>
         <name>Group</name>
+    </types>
+
+    <!-- OWD -->
+    <types>
+        <members>*</members>
+        <name>Settings</name>
     </types>
 
     <!-- Custom Application -->
@@ -46,6 +57,8 @@
     <!-- Custom Metadata Type Definition -->
     <types>
         <members>System_Threshold__mdt</members>
+        <members>Metadata_Driven_Trigger__mdt</members>
+        <members>Disabled_For__mdt</members>
         <name>CustomObject</name>
     </types>
 
@@ -92,7 +105,42 @@
         <members>Case-Review Issue Layout</members>
         <members>Case-Maintenance Request Layout</members>
         <members>Contact-Contact Layout</members>
+        <members>Disabled_For__mdt-Disabled For Layout</members>
+        <members>Metadata_Driven_Trigger__mdt-Metadata Driven Trigger Layout</members>
+         <members>System_Threshold__mdt-System Threshold Layout</members>
         <name>Layout</name>
     </types>
+
+    <!-- Lightning Web Components -->
+    <types>
+        <members>errorPanel</members>
+        <members>ldsUtils</members>
+        <name>LightningComponentBundle</name>
+    </types>
+
+    <!-- Apex Classes -->
+    <types>
+        <members>Log</members>
+        <members>MetadataTriggerService</members>
+        <members>MetadataTriggerService_Tests</members>
+        <members>MetadataTriggerHandler</members>
+        <members>MetadataTriggerHandler_Tests</members>
+        <members>TriggerHandler</members>
+        <members>TriggerHandler_Test</members>
+        <members>LogSeverity</members>
+        <members>LogMessage</members>
+        <members>Log_Tests</members>
+        <members>TestHelper</members>
+        <members>TestDouble</members>
+        <members>LogTriggerHandler</members>
+        <name>ApexClass</name>
+    </types>
+
+    <!-- Apex Trigger -->
+    <types>
+        <members>LogTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
+
     <version>65.0</version>
 </Package>
