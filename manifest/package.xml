@@ -18,7 +18,23 @@
     <!-- Permission Set -->
     <types>
         <members>Car_On_Rental</members>
+        <members>Rental_Manager_Permissions</members>
         <name>PermissionSet</name>
+    </types>
+
+    <types>
+        <members>Car Rental Representative</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Role</name>
+    </types>
+
+    <types>
+        <members>Fleet_Management_Team</members>
+        <members>Marketing_Team</members>
+        <name>Group</name>
     </types>
 
     <!-- Custom Application -->
