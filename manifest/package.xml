@@ -136,5 +136,32 @@
         <name>ApexTrigger</name>
     </types>
 
+    <!-- Email Template -->
+    <types>
+        <members>CarOnRental/Case_Assignment_Email_Template_1772169963954</members>
+        <name>EmailTemplate</name>
+    </types>
+
+    <!-- Case Assignment Rules -->
+    <types>
+        <members>Case</members>
+        <name>AssignmentRules</name>
+    </types>
+
+    <!-- Queues -->
+    <types>
+        <members>Customer_Support_Queue</members>
+        <members>Fleet_Management_Team</members>
+        <members>Manager_Escalation</members>
+        <name>Group</name>
+    </types>
+
+    <!-- Escalation Rules -->
+    <types>
+        <members>Case</members>
+        <name>EscalationRules</name>
+    </types>
+
+
     <version>65.0</version>
 </Package>
