@@ -42,12 +42,6 @@
         <name>Group</name>
     </types>
 
-    <!-- OWD -->
-    <types>
-        <members>*</members>
-        <name>Settings</name>
-    </types>
-
     <!-- Custom Application -->
     <types>
         <members>Car_On_Rental</members>
