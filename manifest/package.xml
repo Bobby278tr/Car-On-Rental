@@ -162,6 +162,18 @@
         <name>EscalationRules</name>
     </types>
 
+    <!-- Matching Rules -->
+    <types>
+        <members>Coupon_Code__c</members>
+        <name>MatchingRules</name>
+    </types>
+
+    <!-- Duplicate Rule -->
+    <types>
+        <members>Coupon_Code__c.Block_Duplicate_Coupon_Code</members>
+        <name>DuplicateRule</name>
+    </types>
+
 
     <version>65.0</version>
 </Package>
