@@ -181,11 +181,17 @@
         <name>ApprovalProcess</name>
     </types>
 
-    <!--Record Trigger Flows-->
+    <!--Flows-->
     <types>
         <members>Approval_For_Coupon_Code</members>
+        <members>Estimate_Your_Booking</members>
         <name>Flow</name>
     </types>
 
+    <!-- Quick Actions -->
+    <types>
+        <members>Car__c.Estimate_Your_Booking</members>
+        <name>QuickAction</name>
+    </types>
     <version>65.0</version>
 </Package>
