@@ -193,5 +193,11 @@
         <members>Car__c.Estimate_Your_Booking</members>
         <name>QuickAction</name>
     </types>
+
+    <!-- Quick Action -->
+    <types>
+        <members>Booking_Status</members>
+        <name>PathAssistant</name>
+    </types>
     <version>65.0</version>
 </Package>
