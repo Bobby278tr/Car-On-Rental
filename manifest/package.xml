@@ -153,6 +153,7 @@
         <members>Customer_Support_Queue</members>
         <members>Fleet_Management_Team</members>
         <members>Manager_Escalation</members>
+        <members>Coupon_Code_Approval</members>
         <name>Group</name>
     </types>
 
@@ -174,6 +175,17 @@
         <name>DuplicateRule</name>
     </types>
 
+    <!-- Approval Process -->
+    <types>
+        <members>Coupon_Code__c.Coupon_Code_Discount_Level_Approval</members>
+        <name>ApprovalProcess</name>
+    </types>
+
+    <!--Record Trigger Flows-->
+    <types>
+        <members>Approval_For_Coupon_Code</members>
+        <name>Flow</name>
+    </types>
 
     <version>65.0</version>
 </Package>
