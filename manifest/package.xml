@@ -185,16 +185,18 @@
     <types>
         <members>Approval_For_Coupon_Code</members>
         <members>Estimate_Your_Booking</members>
+        <members>Car_Return_Checklist</members>
         <name>Flow</name>
     </types>
 
     <!-- Quick Actions -->
     <types>
         <members>Car__c.Estimate_Your_Booking</members>
+        <members>Booking__c.Car_Return_Process</members>
         <name>QuickAction</name>
     </types>
 
-    <!-- Quick Action -->
+    <!-- Path -->
     <types>
         <members>Booking_Status</members>
         <name>PathAssistant</name>
