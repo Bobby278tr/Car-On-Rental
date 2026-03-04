@@ -189,6 +189,8 @@
         <members>Post_Booking_Automation_Field_Update</members>
         <members>Post_Booking_Automation_After_Save_Activity</members>
         <members>Post_Booking_Cancellation_Automation</members>
+        <members>Sync_Primary_Image</members>
+        <members>Prevent_Deletion_Of_Primary_Image</members>
         <name>Flow</name>
     </types>
 
