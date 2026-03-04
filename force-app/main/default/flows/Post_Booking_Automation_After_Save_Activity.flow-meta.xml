@@ -50,6 +50,35 @@
     </actionCalls>
     <apiVersion>66.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_for_Payments</name>
+        <label>Check for Payments</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Payment Received</defaultConnectorLabel>
+        <rules>
+            <name>Payment_Not_Received</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Booking_Records_After_24_Hours.Total_Paid_Amount__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Booking_Records_After_24_Hours.Total_Security_Deposit_Paid__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AutoCancel_the_Booking</targetReference>
+            </connector>
+            <label>Payment Not Received</label>
+        </rules>
+    </decisions>
     <environments>Default</environments>
     <formulas>
         <name>futureDueDate</name>
@@ -162,6 +191,50 @@
         <object>Log__e</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
+    <recordLookups>
+        <name>Booking_Records_After_24_Hours</name>
+        <label>Booking Records After 24 Hours</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_for_Payments</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Booking__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>AutoCancel_the_Booking</name>
+        <label>AutoCancel the Booking</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Publish_Error_Message</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Cancellation_Reason__c</field>
+            <value>
+                <stringValue>Autocancel Booking due to No Payment in 24 Hours</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
@@ -170,6 +243,16 @@
         </connector>
         <object>Booking__c</object>
         <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Actions_after_24_Hours_of_Booking</name>
+            <connector>
+                <targetReference>Booking_Records_After_24_Hours</targetReference>
+            </connector>
+            <label>Actions after 24 Hours of Booking</label>
+            <offsetNumber>24</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
