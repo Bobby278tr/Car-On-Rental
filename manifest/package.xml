@@ -188,6 +188,7 @@
         <members>Car_Return_Checklist</members>
         <members>Post_Booking_Automation_Field_Update</members>
         <members>Post_Booking_Automation_After_Save_Activity</members>
+        <members>Post_Booking_Cancellation_Automation</members>
         <name>Flow</name>
     </types>
 
