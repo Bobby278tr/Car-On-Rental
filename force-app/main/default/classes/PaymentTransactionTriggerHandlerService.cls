@@ -53,7 +53,7 @@ public with sharing class PaymentTransactionTriggerHandlerService {
         }
     }
 
-    public static String calculatePaymentStatus(Decimal finalBookingPrice, Decimal initialPayment, Decimal securityDeposit, Decimal         partialPayment, Decimal securityPayment){
+    public static String calculatePaymentStatus(Decimal finalBookingPrice, Decimal initialPayment, Decimal securityDeposit, Decimal partialPayment, Decimal securityPayment){
         if(initialPayment == 0 && finalBookingPrice == 0 && securityDeposit ==0 ){
             return Constants.BOOKING_PENDING_STATUS;
         } 
