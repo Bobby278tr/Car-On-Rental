@@ -58,6 +58,13 @@
 
     <!-- Custom Metadata Records -->
     <types>
+        <members>Metadata_Driven_Trigger__mdt.BookingTrigger</members>
+        <members>Metadata_Driven_Trigger__mdt.PaymentTransactionTrigger</members>
+        <name>CustomMetadata</name>
+    </types>
+
+    <!-- Custom Metadata Records -->
+    <types>
         <members>System_Threshold__mdt.Cancellation_Percentage</members>
         <members>System_Threshold__mdt.Max_Auto_Approved_Discount</members>
         <members>System_Threshold__mdt.Max_Code_Discount</members>
@@ -148,7 +155,7 @@
         <name>AssignmentRules</name>
     </types>
 
-    <!-- Queues -->
+    <!-- Queues 
     <types>
         <members>Customer_Support_Queue</members>
         <members>Fleet_Management_Team</members>
@@ -156,6 +163,7 @@
         <members>Coupon_Code_Approval</members>
         <name>Group</name>
     </types>
+    -->
 
     <!-- Escalation Rules -->
     <types>
