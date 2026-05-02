@@ -58,4 +58,55 @@ public with sharing class BookingTriggerHandlerTest {
         System.assertEquals(expectedTotalBookingValue, actualTotalBookingValue, 'Total Booking Value on Car is not updated correctly');
 
     }
+
+    @IsTest
+    static void testBookingOverlap(){
+        Car__c car = [SELECT Id FROM Car__c LIMIT 1];
+        Contact contact = [SELECT Id FROM Contact LIMIT 1];
+        Booking__c firstBooking = new Booking__c();
+        firstBooking.Customer__c = contact.Id;
+        firstBooking.Car__c = car.Id;
+        firstBooking.Start_Date_Time__c = Date.today().addDays(2);
+        firstBooking.End_Date_Time__c = Date.today().addDays(6);
+        firstBooking.Status__c = Constants.BOOKING_PENDING_STATUS;
+        firstBooking.Payment_Status__c = Constants.BOOKING_PENDING_STATUS;
+        firstBooking.Final_Booking_Price__c = 500.00;
+        insert firstBooking;    
+
+        Booking__c secondBooking = new Booking__c();
+        secondBooking.Customer__c = contact.Id;
+        secondBooking.Car__c = car.Id;
+        secondBooking.Start_Date_Time__c = Date.today().addDays(7);
+        secondBooking.End_Date_Time__c = Date.today().addDays(10);
+        secondBooking.Status__c = Constants.BOOKING_PENDING_STATUS;
+        secondBooking.Payment_Status__c = Constants.BOOKING_PENDING_STATUS;
+        secondBooking.Final_Booking_Price__c = 400.00;
+        insert secondBooking;
+
+        Booking__c overlappingBooking = new Booking__c();
+        overlappingBooking.Customer__c = contact.Id;
+        overlappingBooking.Car__c = car.Id;
+        overlappingBooking.Start_Date_Time__c = Date.today().addDays(5);
+        overlappingBooking.End_Date_Time__c = Date.today().addDays(8);
+        overlappingBooking.Status__c = Constants.BOOKING_PENDING_STATUS;
+        overlappingBooking.Payment_Status__c = Constants.BOOKING_PENDING_STATUS;
+        overlappingBooking.Final_Booking_Price__c = 400.00;
+        Test.startTest();
+            try {
+                insert overlappingBooking;
+                System.assert(false, 'Expected an exception due to booking overlap, but it was not thrown.');
+            } catch (DmlException e) {
+                System.assert(e.getMessage().contains(System.Label.Booking_Overlap_Message), 'Expected booking overlap error message, but got: ' + e.getMessage());
+            }
+
+        secondBooking.Start_Date_Time__c = Date.today().addDays(1);
+        secondBooking.End_Date_Time__c = Date.today().addDays(4);
+        try {            
+            update secondBooking;
+            System.assert(false, 'Expected an exception due to booking overlap on update, but it was not thrown.');
+        } catch (DmlException e) {
+            System.assert(e.getMessage().contains(System.Label.Booking_Overlap_Message), 'Expected booking overlap error message on update, but got: ' + e.getMessage());
+        }
+        Test.stopTest();
+    }
 }
