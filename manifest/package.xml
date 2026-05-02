@@ -39,7 +39,17 @@
     <types>
         <members>Fleet_Management_Team</members>
         <members>Marketing_Team</members>
+        <members>Customer_Support</members>\
         <name>Group</name>
+    </types>
+
+    <!-- Queue -->
+    <types>
+        <members>Customer_Support_Queue</members>
+        <members>Fleet_Management_Team</members>
+        <members>Manager_Escalation</members>
+        <members>Coupon_Code_Approval</members>
+        <name>Queue</name>
     </types>
 
     <!-- Custom Application -->
@@ -60,6 +70,7 @@
     <types>
         <members>Metadata_Driven_Trigger__mdt.BookingTrigger</members>
         <members>Metadata_Driven_Trigger__mdt.PaymentTransactionTrigger</members>
+        <members>Metadata_Driven_Trigger__mdt.ReviewTrigger</members>
         <name>CustomMetadata</name>
     </types>
 
@@ -154,16 +165,6 @@
         <members>Case</members>
         <name>AssignmentRules</name>
     </types>
-
-    <!-- Queues 
-    <types>
-        <members>Customer_Support_Queue</members>
-        <members>Fleet_Management_Team</members>
-        <members>Manager_Escalation</members>
-        <members>Coupon_Code_Approval</members>
-        <name>Group</name>
-    </types>
-    -->
 
     <!-- Escalation Rules -->
     <types>
