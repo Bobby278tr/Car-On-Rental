@@ -56,4 +56,19 @@ public with sharing class TestDataFactory {
         insert bookingList;
         return bookingList;
     }
+
+    public static List<Review__c> createReviews(Integer numberOfReviews, List<Booking__c> bookings, Integer rating){
+        List<Review__c> reviewList = new List<Review__c>();
+        for(Integer i=0; i<numberOfReviews; i++){
+            Booking__c booking = bookings[Math.mod(i, bookings.size())];
+            Review__c review = new Review__c();
+            review.Booking__c = booking.Id;
+            review.Customer__c = booking.Customer__c;
+            review.Rating__c = rating;
+            review.Comments__c = 'This is a test review comment for review number '+i;
+            reviewList.add(review);
+        }
+        insert reviewList;
+        return reviewList;
+    }
 }
