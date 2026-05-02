@@ -56,6 +56,31 @@ public with sharing class ReviewTriggerHandlerTest {
         // Asserting if the case is created for low rating review
         cases = [SELECT Id FROM Case WHERE RecordTypeId = :reviewIssueRecordTypeId AND Review_Id__c = :reviews[0].Id AND Type = :Constants.NEGATIVE_REVIEW_CASE_TYPE];
         System.assertEquals(1, cases.size(), 'Case should be created for low rating review');
+    }
 
+    @IsTest
+    static void testInsertForAverageCarRating(){
+        List<Booking__c> bookings = [SELECT Id, Customer__c, Car__c FROM Booking__c Limit 1];
+
+        Test.startTest();
+            List<Review__c> firstReviews = TestDataFactory.createReviews(1, bookings, 4);
+            List<Review__c> secondReviews = TestDataFactory.createReviews(1, bookings, 5);
+        
+
+        // Asserting if the average rating of the car is updated
+        Car__c car = [SELECT Id, Average_Rating__c FROM Car__c WHERE Id = :bookings[0].Car__c];
+        System.assertEquals(5, car.Average_Rating__c, 'Average rating of the car should be 5');
+
+        firstReviews[0].Rating__c = 3;
+        update firstReviews;
+        // Asserting if the average rating of the car is updated after review update
+        car = [SELECT Id, Average_Rating__c FROM Car__c WHERE Id = :bookings[0].Car__c];
+        System.assertEquals(4, car.Average_Rating__c, 'Average rating of the car should be 4');
+
+        delete secondReviews;
+        Test.stopTest();
+        // Asserting if the average rating of the car is updated after review deletion
+        car = [SELECT Id, Average_Rating__c FROM Car__c WHERE Id = :bookings[0].Car__c];
+        System.assertEquals(3, car.Average_Rating__c, 'Average rating of the car should be 3');
     }
 }

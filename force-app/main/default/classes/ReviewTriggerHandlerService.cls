@@ -88,4 +88,52 @@ public with sharing class ReviewTriggerHandlerService {
             }
         }
     }
-} 
+
+    public static void updateCarAverageRating(List<Review__c> reviews){
+        Set<Id> carIds = new Set<Id>();
+        Set<Id> bookingIds = new Set<Id>();
+        for(Review__c review : reviews){
+            if(String.isNotBlank(review.Booking__c)){
+                bookingIds.add(review.Booking__c);  
+            }
+        }
+
+        Map<Id, Booking__c> bookingList = new Map<Id, Booking__c>([SELECT Id, Car__c FROM Booking__c WHERE Id IN :bookingIds]);
+
+        for(Review__c review : reviews){
+            if(bookingList.containsKey(review.Booking__c)){
+                Id carId = bookingList.get(review.Booking__c).Car__c;
+                if(carId != null){
+                    carIds.add(carId);
+                }
+            }
+        }
+
+        Map<Id, Decimal> carAverageRatingMap = new Map<Id, Decimal>();
+
+        for(AggregateResult ar: [SELECT Booking__r.Car__c, AVG(Rating__c) avgRating from Review__c Where Booking__r.Car__c IN :carIds GROUP By Booking__r.Car__c ]){
+            Id carId = (Id)ar.get('Car__c');
+            Decimal avgRating = (Decimal)ar.get('avgRating');
+            carAverageRatingMap.put(carId, avgRating.round(System.RoundingMode.HALF_UP));
+        }
+
+        List<Car__c> carsToUpdate = new List<Car__c>();
+        for(Id carId : carIds){
+            if(carAverageRatingMap.containsKey(carId)){
+                Car__c carToUpdate = new Car__c();
+                carToUpdate.Id = carId;
+                carToUpdate.Average_Rating__c = carAverageRatingMap.get(carId);
+                carsToUpdate.add(carToUpdate);
+            }
+        }
+
+        if(!carsToUpdate.isEmpty()){
+            try {
+                update carsToUpdate;
+            } catch (Exception ex) {
+                Log logger = Log.get();
+                logger.publish('Error while Updating Car Average Rating : '+ex.getMessage());
+            }
+        }
+    }
+}
