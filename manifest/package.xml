@@ -81,6 +81,8 @@
         <members>System_Threshold__mdt.Max_Code_Discount</members>
         <members>System_Threshold__mdt.Min_Review_Rating</members>
         <members>System_Threshold__mdt.Security_Deposit_Percentage</members>
+        <members>System_Threshold__mdt.Days_To_Keep_Logs</members>
+        <members>System_Threshold__mdt.Log_Clean_Up_Notification</members>
         <name>CustomMetadata</name>
     </types>
 
