@@ -215,5 +215,9 @@
         <members>Booking_Status</members>
         <name>PathAssistant</name>
     </types>
+    <types>
+        <members>Booking_Overlap_Message</members>
+        <name>CustomLabel</name>
+    </types>
     <version>65.0</version>
 </Package>
