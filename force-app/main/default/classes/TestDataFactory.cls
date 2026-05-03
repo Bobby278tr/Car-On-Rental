@@ -31,6 +31,7 @@ public with sharing class TestDataFactory {
             car.Rental_Rate_Per_Day__c = 100;
             car.Mileage_Limit_Per_Day__c = 200;
             car.Number_of_Seats__c = 7;
+            car.PickupLocation__c = 'Pune';
             carList.add(car);
         }
         insert carList;

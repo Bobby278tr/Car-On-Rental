@@ -18,4 +18,5 @@ public with sharing class Constants {
     public static final String NEGATIVE_REVIEW_CASE_TYPE = 'Negative Review';
     public static final String CASE_PRIORITY_MEDIUM = 'Medium';
     public static final String SECURITY_DEPOSIT_THRESHOLD = 'Security_Deposit_Percentage';
+    public static final String AVAILABLE_CARS = 'Available';
 }
