@@ -83,6 +83,7 @@
         <members>System_Threshold__mdt.Security_Deposit_Percentage</members>
         <members>System_Threshold__mdt.Days_To_Keep_Logs</members>
         <members>System_Threshold__mdt.Log_Clean_Up_Notification</members>
+        <members>System_Threshold__mdt.Email_Reputation</members>
         <name>CustomMetadata</name>
     </types>
 
@@ -210,6 +211,18 @@
         <members>Car__c.Estimate_Your_Booking</members>
         <members>Booking__c.Car_Return_Process</members>
         <name>QuickAction</name>
+    </types>
+
+    <!-- External Credential -->
+    <types>
+        <members>Email_Reputation</members>
+        <name>ExternalCredential</name>
+    </types>
+
+    <!-- Namedcredentials -->
+    <types>
+        <members>EmailReputation</members>
+        <name>NamedCredential</name>
     </types>
 
     <!-- Path -->

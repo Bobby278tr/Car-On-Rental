@@ -19,4 +19,7 @@ public with sharing class Constants {
     public static final String CASE_PRIORITY_MEDIUM = 'Medium';
     public static final String SECURITY_DEPOSIT_THRESHOLD = 'Security_Deposit_Percentage';
     public static final String AVAILABLE_CARS = 'Available';
+    public static final String STATUS_EMAIL = 'deliverable';
+    public static final String STATUS_DETAIL_EMAIL = 'valid_email';
+
 }
