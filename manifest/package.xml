@@ -89,6 +89,7 @@
 
     <types>
         <members>CarOnRentalLogo</members>
+        <members>fivestar</members>
         <name>StaticResource</name>
     </types>
 
