@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Car_Image__c</fullName>
     <externalId>false</externalId>
-    <formula>If( ISBLANK( Primary_Image_Url__c ), IMAGE(&apos;/resource/CarOnRentalLogo&apos;, &quot;Car ON Rental Logo&quot;, 200, 200), IMAGE(Primary_Image_Url__c,  Name, 400, 400))</formula>
+    <formula>If( ISBLANK( Primary_Image_Url__c ), IMAGE(&apos;/resource/CarOnRentalLogo&apos;, &quot;Car ON Rental Logo&quot;, 200, 200), IMAGE(Primary_Image_Url__c,  Name, 400, 500))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Car Image</label>
     <required>false</required>

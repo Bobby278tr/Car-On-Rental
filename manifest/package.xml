@@ -90,6 +90,7 @@
     <types>
         <members>CarOnRentalLogo</members>
         <members>fivestar</members>
+        <members>Images</members>
         <name>StaticResource</name>
     </types>
 
