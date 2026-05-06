@@ -52,6 +52,7 @@
     <label>Car On Rental</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
+    <tabs>Car_Hunt</tabs>
     <tabs>standard-Contact</tabs>
     <tabs>Car__c</tabs>
     <tabs>Booking__c</tabs>

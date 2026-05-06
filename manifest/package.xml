@@ -107,6 +107,7 @@
     <types>
         <members>Car_Record_Page</members>
         <members>Booking_Record_Page</members>
+        <members>Car_Hunt</members>
         <name>FlexiPage</name>
     </types>
 
