@@ -237,5 +237,10 @@
         <members>Booking_Overlap_Message</members>
         <name>CustomLabel</name>
     </types>
+
+    <types>
+        <members>carFilter</members>
+        <name>LightningMessageChannel</name>
+    </types>
     <version>65.0</version>
 </Package>
