@@ -12,7 +12,7 @@ public with sharing class carTileListController {
         @AuraEnabled public List<String> fuelType{get; set;}
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<Car__c> getCars(Filters filters){
         try {
             List<String> criteria = new List<String>();
@@ -39,7 +39,7 @@ public with sharing class carTileListController {
            If(filters.minRating != null){
                 minRating = filters.minRating;
                 if(minRating == 0){
-                    criteria.add('Average_Rating__c = null OR Average_Rating__c >= 0');
+                    criteria.add('(Average_Rating__c = null OR Average_Rating__c >= 0)');
                 }else{
                     criteria.add('Average_Rating__c >= :filters.minRating');
                 }

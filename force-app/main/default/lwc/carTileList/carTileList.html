@@ -1,0 +1,31 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-p-around_small">
+            <template lwc:if={showInitialMessage}>
+                <c-placeholder message="Select the Pickup location, start date and end date to view available cars"></c-placeholder>
+            </template>
+            <template lwc:else>
+                <template lwc:if={filteredCars.data}>
+                    <!-- Either records are available -->
+                     <template lwc:if={isRecordFound}>
+                        <lightning-layout multiple-rows>
+                            <template for:each={filteredCars.data} for:item='car'>
+                                <lightning-layout-item key={car.Id} padding="around_small" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
+                                    <c-car-tile></c-car-tile>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                     </template>
+                    <!-- No records are found -->
+                     <template lwc:else>
+                        <c-placeholder message="No cars found for the selected criteria"></c-placeholder>
+                     </template>
+                    
+                </template>
+                <template lwc:if={filteredCars.error}>
+                    <c-error-panel error={filteredCars.error}></c-error-panel>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
