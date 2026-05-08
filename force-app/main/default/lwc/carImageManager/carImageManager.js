@@ -7,6 +7,7 @@ import {refreshApex} from '@salesforce/apex';
 
 export default class CarImageManager extends LightningElement {
     @api recordId;
+    @api hideUploadSection = false;
     isPrimaryChecked = true;
     carImages = [];
     isLoading = false;
@@ -69,6 +70,8 @@ export default class CarImageManager extends LightningElement {
         this.dispatchEvent(event);
     }
 
-    
+    get showUploadSection(){
+        return !this.hideUploadSection;
+    }
 
 }

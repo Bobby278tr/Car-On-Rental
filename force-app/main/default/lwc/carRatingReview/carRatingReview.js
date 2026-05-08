@@ -8,6 +8,7 @@ export default class CarRatingReview extends LightningElement {
     averageRating = 0;
     ratingDistribution = {};
     totalReview = 0;
+    hasData = false;
 
     @wire(getCarReview, { carId: '$recordId' })
     wiredCarReview({ error, data }) {
@@ -19,6 +20,7 @@ export default class CarRatingReview extends LightningElement {
             this.ratingDistribution = data.ratingDistribution;
             this.totalReview = data.totalReview;
             this.processReviews();
+            this.hasData = true;
         } else if (error) {
             this.error = error;
             this.carReview = undefined;
@@ -48,8 +50,14 @@ export default class CarRatingReview extends LightningElement {
         for(let i = 5; i >= 1; i--){
             const count = this.ratingDistribution[i];
             const total = this.totalReview;
-            const percentage = (count / total) * 100;
-            const fixedPercentage = percentage.toFixed(2);
+            let fixedPercentage;
+            if(total > 0){
+                const percentage = (count / total) * 100;
+                fixedPercentage = percentage.toFixed(2);
+            }else{
+                fixedPercentage = 0;
+            }
+            
             distribution.push({
                 rating: i,
                 count: count,
