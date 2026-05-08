@@ -1,7 +1,8 @@
 import { LightningElement, wire } from 'lwc';
-import { subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext} from "lightning/messageService";
+import { publish, subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext} from "lightning/messageService";
 import carFilter from "@salesforce/messageChannel/carFilter__c";
 import getCars from '@salesforce/apex/carTileListController.getCars';
+import carSelection from "@salesforce/messageChannel/carSelection__c";
 
 
 export default class CarTileList extends LightningElement {
@@ -49,5 +50,20 @@ export default class CarTileList extends LightningElement {
     unsubscribeToMessageChannel() {
         unsubscribe(this.subscription);
         this.subscription = null;
+    }
+
+    handleCarSelected(event){
+        console.log('Car Tile Selected :: ', event.detail);
+        const payload = { carId: event.detail };
+
+        publish(this.messageContext, carSelection, payload);
+    }
+
+    handleEstimateBooking(event){
+        console.log('EstimateBooking selected ::: ', event.detail);
+    }
+
+    handleBookNow(event){
+        console.log('Book Now clicked ::', event.detail);
     }
 }

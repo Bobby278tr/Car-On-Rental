@@ -11,7 +11,10 @@
                         <lightning-layout multiple-rows>
                             <template for:each={filteredCars.data} for:item='car'>
                                 <lightning-layout-item key={car.Id} padding="around_small" size="12" small-device-size="12" medium-device-size="6" large-device-size="4">
-                                    <c-car-tile></c-car-tile>
+                                    <c-car-tile car={car} 
+                                    oncarselected={handleCarSelected}
+                                    onestimatebooking ={handleEstimateBooking}
+                                    onbooknow={handleBookNow}></c-car-tile>
                                 </lightning-layout-item>
                             </template>
                         </lightning-layout>

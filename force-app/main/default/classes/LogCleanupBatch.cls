@@ -12,10 +12,10 @@ public with sharing class LogCleanupBatch implements Database.Batchable<SObject>
 
     public void loadConfiguration(){
         // Fetch the number of days to keep logs and notification email from Custom Metadata
-        System_Threshold__mdt logCleanupMdt = System_Threshold__mdt.getInstance('Log_Clean_Up_Notification__c');
-        notificationEmail = logCleanupMdt.value__c;
+        System_Threshold__mdt logCleanupMdt = System_Threshold__mdt.getInstance('Log_Clean_Up_Notification');
+        notificationEmail = logCleanupMdt.Value__c;
         System_Threshold__mdt daysToKeepMdt = System_Threshold__mdt.getInstance('Days_To_Keep_Logs');
-        daysToKeep = Integer.valueOf(daysToKeepMdt.value__c);
+        daysToKeep = Integer.valueOf(daysToKeepMdt.Value__c);
     }
 
     public Database.QueryLocator start(Database.BatchableContext bc) {
