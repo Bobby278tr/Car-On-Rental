@@ -11,10 +11,14 @@ import TRANSMISSION_FIELD from '@salesforce/schema/Car__c.Transmission_Type__c';
 import FUEL_FIELD from '@salesforce/schema/Car__c.Fuel_Type__c';
 import RENTAL_RATE_FIELD from '@salesforce/schema/Car__c.Rental_Rate_Per_Day__c';
 import DESCRIPTION_FIELD from '@salesforce/schema/Car__c.Car_Description__c';
+import bookCarModal from "c/bookCarModal";
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from "lightning/navigation";
+import BOOKING_OBJECT from '@salesforce/schema/Booking__c'
 
 const FIELDS = [NAME_FIELD, RATING_FIELD, MODEL_FIELD, CAR_FAMILY_FIELD, SEATS_FIELD, TRANSMISSION_FIELD, FUEL_FIELD, RENTAL_RATE_FIELD, DESCRIPTION_FIELD];
 
-export default class CarCard extends LightningElement {
+export default class CarCard extends NavigationMixin(LightningElement) {
 
     subscription = null;
     carId;
@@ -90,6 +94,35 @@ export default class CarCard extends LightningElement {
     }
 
     handleBookNow(event){
+        bookCarModal.open({
+            carId : this.carId,
+            size : 'medium'
+        }).then((result) => {
+            if(result && result.output == 'Success'){
+                //showToastMessage
+                this.showToast("Success", "Booking Created Successfully", "Success");
+                //Navigate to the booking record
+                let bookingId = result.bookingId;
+                let pageReferenceOfBooking = {
+                        type: 'standard__recordPage',
+                        attributes: {
+                            recordId: bookingId,
+                            objectApiName: BOOKING_OBJECT.objectApiName,
+                            actionName: 'view'
+                        }
+                }
+                 this[NavigationMixin.Navigate](pageReferenceOfBooking);
+                
+            }
+        })
+    }
 
+    showToast(message, title, variant){
+        const event = new ShowToastEvent({
+            title : title,
+            message : message,
+            variant : variant
+        });
+        this.dispatchEvent(event);
     }
 }

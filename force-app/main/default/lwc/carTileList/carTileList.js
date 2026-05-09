@@ -3,9 +3,13 @@ import { publish, subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext} fro
 import carFilter from "@salesforce/messageChannel/carFilter__c";
 import getCars from '@salesforce/apex/carTileListController.getCars';
 import carSelection from "@salesforce/messageChannel/carSelection__c";
+import bookCarModal from "c/bookCarModal";
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+import { NavigationMixin } from "lightning/navigation";
+import BOOKING_OBJECT from '@salesforce/schema/Booking__c'
 
 
-export default class CarTileList extends LightningElement {
+export default class CarTileList extends NavigationMixin(LightningElement) {
 
     subscription = null;
     filters;
@@ -64,6 +68,35 @@ export default class CarTileList extends LightningElement {
     }
 
     handleBookNow(event){
-        console.log('Book Now clicked ::', event.detail);
+        bookCarModal.open({
+            carId : event.detail,
+            size : 'medium'
+        }).then((result) => {
+            if(result && result.output == 'Success'){
+                //showToastMessage
+                this.showToast("Success", "Booking Created Successfully", "Success");
+                //Navigate to the booking record
+                let bookingId = result.bookingId;
+                let pageReferenceOfBooking = {
+                        type: 'standard__recordPage',
+                        attributes: {
+                            recordId: bookingId,
+                            objectApiName: BOOKING_OBJECT.objectApiName,
+                            actionName: 'view'
+                        }
+                }
+                 this[NavigationMixin.Navigate](pageReferenceOfBooking);
+                
+            }
+        })
+    }
+
+    showToast(message, title, variant){
+        const event = new ShowToastEvent({
+            title : title,
+            message : message,
+            variant : variant
+        });
+        this.dispatchEvent(event);
     }
 }
