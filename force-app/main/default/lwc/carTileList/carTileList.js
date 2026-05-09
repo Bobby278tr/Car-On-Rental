@@ -4,6 +4,7 @@ import carFilter from "@salesforce/messageChannel/carFilter__c";
 import getCars from '@salesforce/apex/carTileListController.getCars';
 import carSelection from "@salesforce/messageChannel/carSelection__c";
 import bookCarModal from "c/bookCarModal";
+import estimateCarBookingModal from "c/estimateCarBookingModal";
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import { NavigationMixin } from "lightning/navigation";
 import BOOKING_OBJECT from '@salesforce/schema/Booking__c'
@@ -65,6 +66,10 @@ export default class CarTileList extends NavigationMixin(LightningElement) {
 
     handleEstimateBooking(event){
         console.log('EstimateBooking selected ::: ', event.detail);
+        estimateCarBookingModal.open({
+            carId: event.detail,
+            size : "medium"
+        });
     }
 
     handleBookNow(event){
